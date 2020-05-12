@@ -1,0 +1,64 @@
+body{
+	background-image: url(../images/wall5.jpg);
+	background-size: 100%;
+	background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form{
+	text-align: center;
+	margin: 70px 140px;
+	width: 70%;
+	background-color:#051019;
+	opacity: 0.8;
+	color: white;
+	padding: 50px;
+}
+
+
+
+#a1{
+	margin-left: 170px;
+}
+#a2{
+	margin-right: 170px;
+}
+
+#workouts {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#workouts td, #workouts th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#workouts tr:nth-child(even){background-color: #f2f2f2;}
+#workouts tr:nth-child(odd){background-color: #f2f2f2;}
+
+#workouts tr:hover {background-color: #ddd;}
+
+#workouts th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: hotpink;
+  color: white;
+}
+
+#button{
+	outline: 0px;
+	Background-color: #0c6996;
+	border: 2px solid #010106;
+	color: aliceblue;
+	font-size: 18px;
+}
+input{
+	padding: 10px;
+	border-radius: 5px;
+	width: 300px;
+}
+

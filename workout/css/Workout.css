@@ -1,0 +1,60 @@
+body{
+	background-image: url(../images/wall5.jpg);
+	background-size: 100%;
+	background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form{
+	text-align: center;
+	margin: 70px 140px;
+	width: 70%;
+	background-color:#051019;
+	opacity: 0.8;
+	color: white;
+	padding: 50px;
+}
+
+
+textarea{
+	padding: 10px;
+	border-radius: 5px;
+	border: 2px black;
+	color:#006699;
+	font-size:16px;
+	font-family: Arial;
+	font-weight: bold;
+	background-color: #e6e6ff;
+	
+}
+
+video {
+  width: 700px;
+  height: auto;
+  padding: 10px;
+	border-radius: 5px;
+	opacity: 1;
+}
+
+#a1{
+	margin-left: 170px;
+}
+#a2{
+	margin-right: 170px;
+}
+
+input{
+	padding: 10px;
+	border-radius: 5px;
+	width: 300px;
+}
+
+
+#button{
+	outline: 0px;
+	Background-color: #0c6996;
+	border: 2px solid #010106;
+	color: aliceblue;
+	font-size: 18px;
+}

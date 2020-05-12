@@ -1,0 +1,36 @@
+body{
+	background-image: url(../images/wall5.jpg);
+	background-size: 100%;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+form{
+	text-align: center;
+	margin: 130px 320px;
+	width: 50%;
+	background-color:#051019;
+	opacity: 0.8;
+	color: white;
+	padding: 50px;
+}
+
+input{
+	padding: 10px;
+	border-radius: 5px;
+	width: 300px;
+}
+
+
+#button{
+	outline: 0px;
+	Background-color: #0c6996;
+	border: 2px solid #010106;
+	color: aliceblue;
+	font-size: 18px;
+}
+
+h2{
+	color: hotpink;
+}
