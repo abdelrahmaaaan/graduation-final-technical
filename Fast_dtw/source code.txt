@@ -1,0 +1,109 @@
+import numpy as np
+import csv
+import os
+import statistics
+from fastdtw import fastdtw
+from scipy.spatial.distance import euclidean
+
+
+workout_training =[]
+result =""
+shortest_distance =""
+workout_testing =[]
+workoutlist = []
+workoutlist2 = []
+
+
+
+filename = "TestingFile.csv"
+
+rows = []
+rows1 = []
+
+
+with open(filename, 'r') as csvfile:
+
+    csvreader = csv.reader(csvfile)
+
+
+    for row in csvreader:
+        rows1.append(row)
+
+
+for row in rows1[30:220]:
+
+    workoutlist = []
+    for col in row:
+        workoutlist.append(float(col))
+
+    workout_testing.append(statistics.mean(workoutlist))
+
+
+f = open("data path.txt","r")
+
+for i in range(192) :
+
+    pathh = ""
+    workout_training = []
+    workout_trainingNP = []
+    workout_testingNP = []
+    rows = []
+    if i < 50:
+     pathh = "right_range_five_killos/shoulder_press_right_mov_five_kilo (" + str(i + 1) + ").csv"
+    elif i < 100:
+      pathh ="wrong_range_five_killos/shoulder_press_wrong_mov_five_kilo ("+ str((i%50)+1) + ").csv"
+    elif i <142:
+        pathh = "right_range_ten_killos/shoulder_press_right_mov_ten_kilo (" + str((i%42) + 1) + ").csv"
+    else :
+        pathh = "wrong_range_ten_killos/shoulder_press_wrong_mov_ten_kilo (" + str((i%50) + 1) + ").csv"
+
+    with open(pathh, 'r') as csvfile:
+
+
+        csvreader2 = csv.reader(csvfile)
+
+
+        for row in csvreader2:
+            rows.append(row)
+
+    for row in rows[30:220]:
+
+        workoutlist2 = []
+        for col in row:
+            workoutlist2.append(float((col)))
+        workout_training.append(statistics.mean(workoutlist2))
+
+    workout_testingNP = np.array(workout_testing)
+    workout_trainingNP = np.array(workout_training)
+
+
+
+    distance,path = fastdtw(workout_testingNP,workout_trainingNP, dist=euclidean)
+
+    print(distance)
+
+    print(pathh)
+    if (result==""):
+        result = distance
+        shortest_distance = pathh
+    elif (result > distance):
+        result = distance
+        shortest_distance = pathh
+
+
+
+print("\nThe nearest matching file is :")
+
+if result < 30 :
+ print(shortest_distance)
+else:
+    print("Wrong movement")
+    print(shortest_distance)
+    print(result)
+
+
+
+
+
+os.system('PAUSE')
+num1 = input("num1 ")

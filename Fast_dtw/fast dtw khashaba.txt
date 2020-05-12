@@ -1,0 +1,388 @@
+import numpy as np
+import csv
+import os
+import statistics
+from fastdtw import fastdtw
+from scipy.spatial.distance import euclidean
+
+
+workout_training1 =[]
+workout_training2 =[]
+workout_training3 =[]
+workout_training4 =[]
+workout_training5 =[]
+workout_training6 =[]
+workout_training7 =[]
+result1 = ""
+result2 = ""
+result3 = ""
+result4 = ""
+result5 = ""
+result6 = ""
+result7 = ""
+shortest_distance1 =""
+shortest_distance2 =""
+shortest_distance3 =""
+shortest_distance4 =""
+shortest_distance5 =""
+shortest_distance6 =""
+shortest_distance7 =""
+workout_testing1 =[]
+workout_testing2 =[]
+workout_testing3 =[]
+workout_testing4 =[]
+workout_testing5 =[]
+workout_testing6 =[]
+workout_testing7 =[]
+workoutlist1 = []
+workoutlist2 = []
+workoutlist3 = []
+workoutlist4 = []
+workoutlist5 = []
+workoutlist6 = []
+workoutlist7 = []
+
+
+
+
+workoutlisttrain1 = []
+workoutlisttrain2 = []
+workoutlisttrain3 = []
+workoutlisttrain4 = []
+workoutlisttrain5 = []
+workoutlisttrain6 = []
+workoutlisttrain7 = []
+
+
+
+
+
+
+filename = "TestingFile.csv"
+
+rows = []
+rows1 = []
+
+
+with open(filename, 'r') as csvfile:
+
+    csvreader = csv.reader(csvfile)
+
+
+    for row in csvreader:
+        rows1.append(row)
+
+
+for row in rows1[20:50]:
+    workoutlist1 = []
+    for col in row:
+        workoutlist1.append(float(col))
+    workout_testing1.append(statistics.mean(workoutlist1))
+
+
+
+
+for row in rows1[50:80]:
+    workoutlist2 = []
+    for col in row:
+        workoutlist2.append(float(col))
+    workout_testing2.append(statistics.mean(workoutlist2))
+
+
+
+
+
+for row in rows1[80:110]:
+    workoutlist3 = []
+    for col in row:
+        workoutlist3.append(float(col))
+    workout_testing3.append(statistics.mean(workoutlist3))
+
+
+
+
+for row in rows1[110:140]:
+    workoutlist4 = []
+    for col in row:
+        workoutlist4.append(float(col))
+    workout_testing4.append(statistics.mean(workoutlist4))
+
+
+
+for row in rows1[140:170]:
+    workoutlist5 = []
+    for col in row:
+        workoutlist5.append(float(col))
+    workout_testing5.append(statistics.mean(workoutlist5))
+
+
+
+for row in rows1[170:200]:
+    workoutlist6 = []
+    for col in row:
+        workoutlist6.append(float(col))
+    workout_testing6.append(statistics.mean(workoutlist6))
+
+
+
+
+for row in rows1[200:230]:
+    workoutlist7 = []
+    for col in row:
+        workoutlist7.append(float(col))
+    workout_testing7.append(statistics.mean(workoutlist7))
+
+
+f = open("data path.txt","r")
+
+for i in range(192) :
+
+    workout_training1 = []
+    workout_training2 = []
+    workout_training3 = []
+    workout_training4 = []
+    workout_training5 = []
+    workout_training6 = []
+    workout_training7 = []
+
+    workout_testingNP1 = []
+    workout_testingNP2 = []
+    workout_testingNP3 = []
+    workout_testingNP4 = []
+    workout_testingNP5 = []
+    workout_testingNP6 = []
+    workout_testingNP7 = []
+    pathh = ""
+
+
+    rows = []
+    if i < 50:
+     pathh = "right_range_five_killos/shoulder_press_right_mov_five_kilo (" + str(i + 1) + ").csv"
+    elif i < 100:
+      pathh ="wrong_range_five_killos/shoulder_press_wrong_mov_five_kilo ("+ str((i%50)+1) + ").csv"
+    elif i <142:
+        pathh = "right_range_ten_killos/shoulder_press_right_mov_ten_kilo (" + str((i%42) + 1) + ").csv"
+    else :
+        pathh = "wrong_range_ten_killos/shoulder_press_wrong_mov_ten_kilo (" + str((i%50) + 1) + ").csv"
+
+    with open(pathh, 'r') as csvfile:
+
+
+        csvreader2 = csv.reader(csvfile)
+
+
+        for row in csvreader2:
+            rows.append(row)
+
+    for row in rows[30:60]:
+
+
+
+        workoutlisttrain1 = []
+        for col in row:
+            workoutlisttrain1.append(float((col)))
+        workout_training1.append(statistics.mean(workoutlisttrain1))
+        workout_trainingNP1 = np.array(workout_training1)
+        workout_testingNP1 = np.array(workout_testing1)
+        distance1, path = fastdtw(workout_testingNP1, workout_trainingNP1, dist=euclidean)
+        print(distance1)
+        print(pathh)
+        if (result1 == ""):
+            result1 = distance1
+            shortest_distance2 = pathh
+        elif (result1 > distance1):
+            result1 = distance1
+            shortest_distance1 = pathh
+
+    #############################################################################1
+
+    for row in rows[60:90]:
+
+        workoutlisttrain2 = []
+        for col in row:
+            workoutlisttrain2.append(float((col)))
+        workout_training2.append(statistics.mean(workoutlisttrain2))
+    workout_trainingNP2 = np.array(workout_training2)
+    workout_testingNP2 = np.array(workout_testing2)
+    distance2, path = fastdtw(workout_testingNP2, workout_trainingNP2, dist=euclidean)
+    print(distance2)
+    print(pathh)
+    if (result2 == ""):
+        result2 = distance2
+        shortest_distance2 = pathh
+    elif (result2 > distance2):
+        result2 = distance2
+        shortest_distance2 = pathh
+
+
+#############################################################################2
+    for row in rows[90:110]:
+
+        workoutlisttrain3 = []
+        for col in row:
+            workoutlisttrain3.append(float((col)))
+        workout_training3.append(statistics.mean(workoutlisttrain3))
+    workout_trainingNP3 = np.array(workout_training3)
+    workout_testingNP3 = np.array(workout_testing3)
+    distance3, path = fastdtw(workout_testingNP3, workout_trainingNP3, dist=euclidean)
+    print(distance3)
+    print(pathh)
+    if (result3 == ""):
+        result3 = distance3
+        shortest_distance3 = pathh
+    elif (result3 > distance3):
+        result3 = distance3
+        shortest_distance3 = pathh
+
+    #############################################################################3
+    for row in rows[110:140]:
+
+        workoutlisttrain4 = []
+        for col in row:
+            workoutlisttrain4.append(float((col)))
+        workout_training4.append(statistics.mean(workoutlisttrain4))
+
+    workout_trainingNP4 = np.array(workout_training4)
+    workout_testingNP4 = np.array(workout_testing4)
+
+    distance4, path = fastdtw(workout_testingNP4, workout_trainingNP4, dist=euclidean)
+    print(distance4)
+    print(pathh)
+    if (result4 == ""):
+        result4 = distance4
+        shortest_distance4 = pathh
+    elif (result4 > distance4):
+        result4 = distance4
+        shortest_distance4 = pathh
+
+    #############################################################################4
+    for row in rows[140:170]:
+
+        workoutlisttrain5 = []
+        for col in row:
+            workoutlisttrain5.append(float((col)))
+        workout_training5.append(statistics.mean(workoutlisttrain5))
+
+    #############################################################################5
+    workout_trainingNP5 = np.array(workout_training5)
+    workout_testingNP5 = np.array(workout_testing5)
+    distance5, path = fastdtw(workout_testingNP5, workout_trainingNP5, dist=euclidean)
+    print(distance5)
+    print(pathh)
+    if (result5 == ""):
+        result5 = distance5
+        shortest_distance5 = pathh
+    elif (result5 > distance5):
+        result5 = distance5
+        shortest_distance5 = pathh
+
+    #############################################################################6
+    for row in rows[170:200]:
+
+        workoutlisttrain6 = []
+        for col in row:
+            workoutlisttrain6.append(float((col)))
+        workout_training6.append(statistics.mean(workoutlisttrain6))
+    workout_trainingNP6 = np.array(workout_training6)
+    workout_testingNP6 = np.array(workout_testing6)
+    distance6, path = fastdtw(workout_testingNP6, workout_trainingNP6, dist=euclidean)
+    print(distance6)
+    print(pathh)
+    if (result6 == ""):
+        result6 = distance6
+        distance6 = pathh
+    elif (result6 > distance6):
+        result6 = distance6
+        shortest_distance6 = pathh
+
+    #############################################################################7
+    for row in rows[200:230]:
+
+        workoutlisttrain7 = []
+        for col in row:
+            workoutlisttrain7.append(float((col)))
+        workout_training7.append(statistics.mean(workoutlisttrain7))
+    workout_trainingNP7 = np.array(workout_training7)
+    workout_testingNP7 = np.array(workout_testing7)
+    distance7, path = fastdtw(workout_testingNP7, workout_trainingNP7, dist=euclidean)
+    print(distance7)
+    print(pathh)
+    if (result7 == ""):
+        result7 = distance7
+        distance7 = pathh
+    elif (result7 > distance7):
+        result7 = distance7
+        shortest_distance7 = pathh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+print("\nThe nearest matching file is :")
+print(shortest_distance1)
+print(result1)
+
+
+print("\nThe nearest matching file is :")
+print(shortest_distance2)
+print(result2)
+
+
+
+
+print("\nThe nearest matching file is :")
+print(shortest_distance3)
+print(result3)
+
+
+
+print("\nThe nearest matching file is :")
+print(shortest_distance4)
+print(result4)
+
+
+
+
+print("\nThe nearest matching file is :")
+print(shortest_distance5)
+print(result5)
+
+
+
+print("\nThe nearest matching file is :")
+print(shortest_distance6)
+print(result6)
+
+
+print("\nThe nearest matching file is :")
+print(shortest_distance7)
+print(result7)
+
+
+
+# if result1 < 250 :
+#  print(shortest_distance)
+# else:
+#     print("Wrong movement")
+#     print(shortest_distance)
+#     print(result1)
+#
+#
+#
+
+
+
+os.system('PAUSE')
+num1 = input("num1 ")

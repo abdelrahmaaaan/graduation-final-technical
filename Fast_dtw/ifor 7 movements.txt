@@ -1,0 +1,39 @@
+    elif (diffrance>distance.euclidean(float(rows1[1][7])-float(rows1[counter+counter2][7]))and counter == 2):
+            workoutlist2 = []
+            for col in row:
+                workoutlist2.append(float(col))
+            workout_testing2.append(statistics.mean(workoutlist2))
+
+    elif (diffrance <distance.euclidean(float(rows1[1][7])-float(rows1[counter+counter2][7])) and counter == 2):
+            workoutlist3 = []
+            for col in row:
+                workoutlist3.append(float(col))
+            workout_testing3.append(statistics.mean(workoutlist3))
+            counter+=1
+
+    elif (diffrance>distance.euclidean(float(rows1[1][7])-float(rows1[counter+counter2][7]))and counter == 3):
+            workoutlist4 = []
+            for col in row:
+                workoutlist4.append(float(col))
+            workout_testing4.append(statistics.mean(workoutlist4))
+
+    elif (diffrance < distance.euclidean(float(rows1[1][7])-float(rows1[counter+counter2][7]))and counter == 3):
+            workoutlist5 = []
+            for col in row:
+                workoutlist5.append(float(col))
+            workout_testing5.append(statistics.mean(workoutlist5))
+            counter+=1
+
+    elif (diffrance>float(rows1[1][7])-float(rows1[counter+counter2][7])and counter == 4):
+            workoutlist6 = []
+            for col in row:
+                workoutlist6.append(float(col))
+            workout_testing6.append(statistics.mean(workoutlist6))
+
+    elif (diffrance <float(rows1[1][7])-float(rows1[counter+counter2][7])and counter == 4):
+            workoutlist7 = []
+            for col in row:
+                workoutlist7.append(float(col))
+            workout_testing7.append(statistics.mean(workoutlist7))
+            counter+=1
+    counter2+=1

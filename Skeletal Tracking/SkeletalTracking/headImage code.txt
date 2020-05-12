@@ -1,0 +1,1 @@
+<Image Canvas.Left="66" Canvas.Top="90" Height="87" Name="headImage" Stretch="Fill" Width="84" Source="/SkeletalTracking;component/c4f-color.png" />
