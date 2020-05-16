@@ -77,18 +77,16 @@ for i in range (len(rows1)):
 
         else:
             IsBadData = False
-            # if max1 < rows1[i][1]:
-            #     max1=i
+            
             rows2.append(rows1[i])
 
-# print(rows2[0][1])
+
 
 cut=0
 Acounter=0
 distancePlus=0
 distanceMinus=0
-# if (-2>-5):
-#     print("eror")
+
 
 
 right=0
@@ -96,17 +94,15 @@ wrong=0
 array=[]
 for row in rows2[0: rows2.__len__() - 1]:
 
-    a = [float(rows2[0][1])] #8
+    a = [float(rows2[0][1])] 
     # print(a)
-    b = [float(rows2[counter + 1][1]) ] #14
-    # print(b)
-    # print(counter)
-    diffranceEculidian = b #9,10
+    b = [float(rows2[counter + 1][1]) ] 
+    
+    diffranceEculidian = b 
     counter += 1
     if (not flag):
 
-        # c =[float(rows2[0][0]), float(rows2[0][1]), float(rows2[0][2])]
-        # TRange = distance.euclidean(  a,b  )
+        
         distancePlus = a
         # print(Range)
         flag = True
@@ -116,7 +112,7 @@ for row in rows2[0: rows2.__len__() - 1]:
         if(not flagU):
             cut+=1
 
-        # print(diffranceEculidian)
+        
         flagU = True
 
 
@@ -136,24 +132,20 @@ for row in rows2[0: rows2.__len__() - 1]:
         workout_testing1.append((workoutlist2))
         workoutlist2 = []
 
-        # print(workout_testing1.__len__())
+        
     if (cut !=0 and cut %3 == 0 ):
         cut+=1
 
         flagU = False
         counteradat+=1
         workout_trainingNP1=[]
-        # print(workout_testing1)
+        
 
         listq2 = []
-        # q2 = int((workout_testing1.__len__() / 3))
-        # for y in range(0, workout_testing1.__len__() - 1, q2):
-        #     listq2.append(workout_testing1[y])
+       
         for y in range(0, workout_testing1.__len__() - 1):
             listq2.append(statistics.mean(workout_testing1[y]))
-            # file = open("test.txt" + str(y), "w")
-            # file.write(str(workout_testing1[y]))
-            # file.close()
+            
 
         workout_testing1 = []
 
@@ -186,7 +178,7 @@ for row in rows2[0: rows2.__len__() - 1]:
 
                 for row in csvreader2:
                     rows.append(row)
-# rows1 or rows
+
             IsBadData2 = True
             rows3 = []
             for i in range(len(rows)):
@@ -208,7 +200,7 @@ for row in rows2[0: rows2.__len__() - 1]:
             for row in rows3[0:rows3.__len__()-1]: #-4
 
                 a2 = float(rows3[0][1])
-                # print(counter2)
+                
                 b2 = float(rows3[counter2 + 1][1])
                 diffranceEculidian2 = b2  # 9,10
                 counter2 += 1
@@ -221,13 +213,13 @@ for row in rows2[0: rows2.__len__() - 1]:
                     if(not flagU2):
                         cut2+=1
                     flagU2 = True
-                    # flagD2 =False
+                    
 
                     for col in row:
                         workoutlisttrain1.append(float((col)))
                     workout_training1.append(workoutlisttrain1)
                     workoutlisttrain1=[]
-                    # print(workout_training1)
+                    
 
                 elif(Range2>diffranceEculidian2):
                     if (flagU2):
@@ -242,14 +234,11 @@ for row in rows2[0: rows2.__len__() - 1]:
                     cut2+=1
 
                     flagU2 = False
-                    # FlagD = True
+                   
                     q1 = int((workout_training1.__len__()/3))
 
                     listq1 =[]
-                    # print(len(workout_training1))
-                    #
-                    # for x in range(0,workout_training1.__len__()-1,q1):
-                    #     listq1.append(workout_training1[x])
+                    
 
                     for x in range(0,workout_training1.__len__()-1):
                         listq1.append(statistics.mean(workout_training1[x]))
@@ -258,21 +247,15 @@ for row in rows2[0: rows2.__len__() - 1]:
 
                     workout_trainingNP1 = np.array(listq1)
                     workout_testingNP1 = np.array( listq2)
-                    # print(listq1.__len__())
-                    # print(listq2.__len__())
-                    # print(workout_trainingNP1)
-                    # print(workout_testingNP1)
+                    
 
                     distance1, path = fastdtw(workout_testingNP1, workout_trainingNP1, dist=euclidean)
                     workout_training1 =[]
                     workoutlisttrain1 =[]
-                    # print(distance1)
-                    # print(pathh)
+                    
 
 
-                #
-                # if( (flagU == False) and (flagD == True)):
-                #     flagD = False
+               
                     if (result1 == "" ):
                         result1 = distance1
                         shortest_distance1 = pathh
@@ -286,7 +269,7 @@ for row in rows2[0: rows2.__len__() - 1]:
         adat ="\nThe " + str(counteradat) + " Movement is :"
         print(adat)
         print(shortest_distance1)
-        # print(result1)
+        
 
         if (shortest_distance1[0] == 'W'):
             wrong = wrong + 1
@@ -295,7 +278,7 @@ for row in rows2[0: rows2.__len__() - 1]:
             right = right + 1
             array.append('Right')
 
-        # print(result1)
+        
 strDB=''
 
 
